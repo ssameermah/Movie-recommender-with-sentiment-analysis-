@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Finder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='autoComplete.min.css')}}">
+    <link rel= "stylesheet" type= "text/css" href= "{{url_for('static',filename='style.css')}}">
+    <script type="text/javascript">
+      var films = {{suggestions|tojson}};
+      $(document).ready(function(){
+        $("#myModal").modal('show');
+      });
+    </script>
+  </head>
+  <body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
+  <div class="body-content">
+    <div class="ml-container" style="display: block;">
+      <center><h1 class="app-title">Movie Finder</h1></center>
+      <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: white;">
+          <input type="text" name="movie" class="movie form-control" id="autoComplete" autocomplete="off" style="background-color: #ffffff;border-color:#ffffff;width: 60%;" required="required" />
+          <br>
+      </div>
+      <div class="form-group" style="text-align: center;">
+        <button class="btn btn-primary btn-block movie-button" style="text-align: center;border-color: #0000FF;width:120px;" disabled="true" >Enter</button><br><br>
+      </div>
+    </div>
+    <div id="loader" class="text-center">
+    </div>
+    <div class="fail">
+      <center><h3>Sorry! We don't have that in our database yet</h3></center>
+    </div>
+    <div class="results">
+      <center>
+        <h2 id="name" class="text-uppercase"></h2>
+      </center>
+    </div>
+  </div>
+    <script src="{{url_for('static', filename='autoComplete.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
